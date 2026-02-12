@@ -1,0 +1,104 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer utilities {
+    /* Glassmorphism Utilities */
+    .glass-panel {
+        @apply bg-slate-900/40 backdrop-blur-2xl border border-white/5 shadow-2xl shadow-sky-900/20;
+    }
+    
+    .glass-card {
+        @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-white/5 shadow-lg;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal-on-scroll {
+        @apply opacity-0;
+        transform: translateY(24px) scale(0.98);
+        filter: blur(8px);
+        transition: 
+            opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+            filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity, filter;
+    }
+
+    .revealed {
+        @apply opacity-100;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    .unrevealed {
+        opacity: 0;
+        transform: translateY(16px) scale(0.99);
+        filter: blur(4px);
+        transition: 
+            opacity 0.6s ease,
+            transform 0.6s ease,
+            filter 0.5s ease;
+    }
+
+    /* Section Header - Cinematic Stagger */
+    .section-title-group {
+        @apply relative;
+    }
+
+    .section-title-group .section-heading {
+        @apply opacity-0;
+        transform: translateY(30px);
+        filter: blur(8px);
+        transition: 
+            opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+            filter 1s ease;
+        transition-delay: 0.15s;
+    }
+
+    .section-title-group .section-line {
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: 0.5s;
+    }
+
+    .revealed .section-heading {
+        @apply opacity-100;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
+    .revealed .section-line {
+        transform: scaleX(1);
+    }
+
+    .unrevealed .section-heading {
+        @apply opacity-0;
+        transform: translateY(16px);
+        filter: blur(4px);
+        transition-delay: 0s;
+    }
+
+    .unrevealed .section-line {
+        transform: scaleX(0);
+        transition-delay: 0s;
+    }
+
+    /* Hide Scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
