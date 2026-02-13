@@ -6,7 +6,7 @@
     </div>
 
     <!-- Content -->
-    <div class="glass-panel p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
+    <div class="glass-panel p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden border-0">
 
     <div class="grid grid-cols-1 gap-6">
         @forelse($education as $edu)

@@ -31,25 +31,7 @@
     --shadow: rgba(0, 0, 0, 0.3);
 }
 
-body {
-    font-family: 'Lexend', Montserrat, Arial, 'Segoe UI', sans-serif;
-    margin: 0;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
 
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    background: var(--bg-primary);
-    box-shadow: 0px 0px 60px var(--shadow);
-    padding: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
 
 /* Resume Header */
 .resume-header {
@@ -113,15 +95,6 @@ body {
     text-decoration: underline;
 }
 /* Main Content Sections */
-section {
-    padding: 30px;
-    border-bottom: 1px solid #cfcfcf;
-    text-align: left;
-}
-
-section:last-child {
-    border-bottom: none;
-}
 
 h2 {
     color: var(--text-primary);

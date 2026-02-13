@@ -6,7 +6,7 @@
     </div>
 
     <!-- Content -->
-    <div class="glass-panel p-8 md:p-14 rounded-[2.5rem] relative overflow-hidden reveal-on-scroll">
+    <div class="glass-panel p-8 md:p-14 rounded-[2.5rem] relative overflow-hidden reveal-on-scroll border-0">
         <!-- Ambient Light -->
         <div class="absolute -top-20 -left-20 w-60 h-60 bg-sky-500/10 rounded-full blur-[80px] pointer-events-none"></div>
         <div class="absolute -bottom-20 -right-20 w-60 h-60 bg-purple-500/10 rounded-full blur-[80px] pointer-events-none"></div>

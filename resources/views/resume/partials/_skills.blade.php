@@ -9,7 +9,7 @@
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         @foreach($groupedSkills as $category => $skillList)
-        <div class="glass-panel p-8 rounded-[2rem] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 reveal-on-scroll">
+        <div class="glass-panel p-8 rounded-[2rem] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 reveal-on-scroll border-0">
             <h4 class="text-xl font-bold text-rose-400 mb-8 flex items-center gap-3">
                 <span class="w-8 h-8 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400">
                     <i class="fas fa-code text-sm"></i>

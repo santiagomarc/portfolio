@@ -13,11 +13,13 @@
 @layer utilities {
     /* Glassmorphism Utilities */
     .glass-panel {
-        @apply bg-slate-900/40 backdrop-blur-2xl border border-transparent shadow-2xl shadow-sky-900/20;
+        @apply bg-slate-900/40 backdrop-blur-2xl shadow-2xl shadow-sky-900/20;
+        border: none;
     }
     
     .glass-card {
-        @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-transparent shadow-lg;
+        @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl shadow-lg;
+        border: none;
     }
 
     /* Scroll Reveal Animation */

@@ -31,14 +31,7 @@
     --shadow: rgba(0, 0, 0, 0.3);
 }
 
-body {
-    font-family: 'Lexend', Montserrat, Arial, 'Segoe UI', sans-serif;
-    margin: 0;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+/* body rule removed for dark mode compatibility */
 
 .container {
     max-width: 800px;
@@ -112,16 +105,7 @@ body {
 .github-link:hover {
     text-decoration: underline;
 }
-/* Main Content Sections */
-section {
-    padding: 30px;
-    border-bottom: 1px solid #cfcfcf;
-    text-align: left;
-}
-
-section:last-child {
-    border-bottom: none;
-}
+/* Main Content Sections - Cleaned up */
 
 h2 {
     color: var(--text-primary);
