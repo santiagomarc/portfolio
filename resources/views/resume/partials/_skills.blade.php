@@ -1,16 +1,15 @@
 {{-- filepath: resources/views/resume/partials/_skills.blade.php --}}
 <div class="w-full">
     <!-- Header -->
-    <div class="mb-14 reveal-on-scroll section-title-group">
-        <h2 class="section-heading text-7xl lg:text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 leading-tight tracking-tighter pb-2">Skills</h2>
-        <div class="section-line h-px w-full max-w-xs bg-gradient-to-r from-rose-500/60 to-transparent mt-6"></div>
+    <div class="mb-12 reveal-on-scroll section-title-group">
+        <h2 class="section-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 tracking-tighter pb-4">Skills</h2>
     </div>
 
     @php $groupedSkills = $skills->groupBy('category'); @endphp
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         @foreach($groupedSkills as $category => $skillList)
-        <div class="glass-panel p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 reveal-on-scroll">
+        <div class="glass-panel p-8 rounded-[2rem] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 reveal-on-scroll">
             <h4 class="text-xl font-bold text-rose-400 mb-8 flex items-center gap-3">
                 <span class="w-8 h-8 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400">
                     <i class="fas fa-code text-sm"></i>

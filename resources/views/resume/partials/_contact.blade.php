@@ -5,7 +5,7 @@
         <p class="text-slate-400">Feel free to reach out for collaboration opportunities or just to say hello!</p>
     </div>
 
-    <form id="contactForm" method="POST" action="{{ route('contact.send') }}" class="space-y-6 bg-slate-900/50 p-8 rounded-2xl border border-slate-800 backdrop-blur-sm">
+    <form id="contactForm" method="POST" action="{{ route('contact.send') }}" class="space-y-6 bg-slate-900/50 p-8 rounded-2xl border border-transparent backdrop-blur-sm">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-2">

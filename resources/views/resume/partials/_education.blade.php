@@ -1,13 +1,12 @@
 {{-- filepath: resources/views/resume/partials/_education.blade.php --}}
 <div class="w-full">
     <!-- Section Title -->
-    <div class="mb-14 reveal-on-scroll section-title-group">
-        <h2 class="section-heading text-7xl lg:text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 leading-tight tracking-tighter pb-2">Education</h2>
-        <div class="section-line h-px w-full max-w-xs bg-gradient-to-r from-emerald-500/60 to-transparent mt-6"></div>
+    <div class="mb-12 reveal-on-scroll section-title-group">
+        <h2 class="section-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 tracking-tighter pb-4">Education</h2>
     </div>
 
     <!-- Content -->
-    <div class="glass-panel p-8 md:p-12 rounded-[2.5rem] border border-white/5 relative overflow-hidden ring-1 ring-white/10 shadow-2xl">
+    <div class="glass-panel p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
 
     <div class="grid grid-cols-1 gap-6">
         @forelse($education as $edu)

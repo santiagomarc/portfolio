@@ -1,14 +1,13 @@
 {{-- filepath: resources/views/resume/partials/_projects.blade.php --}}
 <div class="w-full">
     <!-- Header -->
-    <div class="mb-14 reveal-on-scroll section-title-group">
-        <h2 class="section-heading text-7xl lg:text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 leading-tight tracking-tighter pb-2">Selected Work</h2>
-        <div class="section-line h-px w-full max-w-xs bg-gradient-to-r from-purple-500/60 to-transparent mt-6"></div>
+    <div class="mb-12 reveal-on-scroll section-title-group">
+        <h2 class="section-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 tracking-tighter pb-4">Selected Work</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @forelse($projects as $project)
-        <div class="group glass-card rounded-[2rem] overflow-hidden hover:scale-[1.02] transition-all duration-500 flex flex-col h-full ring-1 ring-white/5 shadow-2xl reveal-on-scroll bg-gradient-to-br from-white/5 to-white/[0.02]">
+        <div class="group glass-card rounded-[2rem] overflow-hidden hover:scale-[1.02] transition-all duration-500 flex flex-col h-full reveal-on-scroll bg-gradient-to-br from-white/5 to-white/[0.02]">
             <!-- Thumbnail -->
             <div class="relative h-56 overflow-hidden">
                 @if($project->thumbnail_path)

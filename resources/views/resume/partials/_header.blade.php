@@ -40,7 +40,7 @@
             @endif
         </div>
         
-        <div class="flex flex-wrap justify-center lg:justify-start gap-6 text-slate-500 text-sm mt-8 border-t border-white/5 pt-8 w-fit mx-auto lg:mx-0">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-6 text-slate-500 text-sm mt-8 pt-8 w-fit mx-auto lg:mx-0">
              <a href="mailto:{{ $user->email }}" class="hover:text-sky-400 transition-colors flex items-center gap-2">
                 <i class="fas fa-envelope"></i> {{ $user->email }}
             </a>

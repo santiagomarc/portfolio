@@ -1,13 +1,12 @@
 {{-- filepath: resources/views/resume/partials/_summary.blade.php --}}
 <div class="w-full">
     <!-- Section Title -->
-    <div class="mb-14 reveal-on-scroll section-title-group">
-        <h2 class="section-heading text-7xl lg:text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 leading-tight tracking-tighter pb-2">About Me</h2>
-        <div class="section-line h-px w-full max-w-xs bg-gradient-to-r from-sky-500/60 to-transparent mt-6"></div>
+    <div class="mb-12 reveal-on-scroll section-title-group">
+        <h2 class="section-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30 tracking-tighter pb-4">About Me</h2>
     </div>
 
     <!-- Content -->
-    <div class="glass-panel p-8 md:p-14 rounded-[2.5rem] border border-white/5 relative overflow-hidden reveal-on-scroll">
+    <div class="glass-panel p-8 md:p-14 rounded-[2.5rem] relative overflow-hidden reveal-on-scroll">
         <!-- Ambient Light -->
         <div class="absolute -top-20 -left-20 w-60 h-60 bg-sky-500/10 rounded-full blur-[80px] pointer-events-none"></div>
         <div class="absolute -bottom-20 -right-20 w-60 h-60 bg-purple-500/10 rounded-full blur-[80px] pointer-events-none"></div>

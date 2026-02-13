@@ -13,11 +13,11 @@
 @layer utilities {
     /* Glassmorphism Utilities */
     .glass-panel {
-        @apply bg-slate-900/40 backdrop-blur-2xl border border-white/5 shadow-2xl shadow-sky-900/20;
+        @apply bg-slate-900/40 backdrop-blur-2xl border border-transparent shadow-2xl shadow-sky-900/20;
     }
     
     .glass-card {
-        @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-white/5 shadow-lg;
+        @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-transparent shadow-lg;
     }
 
     /* Scroll Reveal Animation */
@@ -48,51 +48,6 @@
             filter 0.5s ease;
     }
 
-    /* Section Header - Cinematic Stagger */
-    .section-title-group {
-        @apply relative;
-    }
-
-    .section-title-group .section-heading {
-        @apply opacity-0;
-        transform: translateY(30px);
-        filter: blur(8px);
-        transition: 
-            opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-            filter 1s ease;
-        transition-delay: 0.15s;
-    }
-
-    .section-title-group .section-line {
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-        transition-delay: 0.5s;
-    }
-
-    .revealed .section-heading {
-        @apply opacity-100;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-
-    .revealed .section-line {
-        transform: scaleX(1);
-    }
-
-    .unrevealed .section-heading {
-        @apply opacity-0;
-        transform: translateY(16px);
-        filter: blur(4px);
-        transition-delay: 0s;
-    }
-
-    .unrevealed .section-line {
-        transform: scaleX(0);
-        transition-delay: 0s;
-    }
-
     /* Hide Scrollbar */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -101,4 +56,43 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+}
+
+/* Section Header - Cinematic Stagger (outside @layer for guaranteed specificity) */
+.section-title-group {
+    position: relative;
+}
+
+.section-title-group .section-heading {
+    opacity: 0;
+    font-size: clamp(3.75rem, 8vw, 6rem);
+    line-height: 1.1;
+    font-weight: 700;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to bottom, white, white, rgba(255,255,255,0.3));
+    letter-spacing: -0.05em;
+    overflow: visible;
+    padding-right: 0.2em; /* Fix cutoff on right edge */
+    transform: translateY(30px);
+    filter: blur(8px);
+    transition: 
+        opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1s ease;
+    transition-delay: 0.15s;
+}
+
+.revealed .section-heading {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+.unrevealed .section-heading {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+    transition-delay: 0s;
 }
