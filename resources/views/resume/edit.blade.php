@@ -4,7 +4,7 @@
 @section('title', 'Edit Resume')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/resume-style.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('css/resume-style.css') }}"> --}}
 <style>
     .edit-container {
         max-width: 900px;
