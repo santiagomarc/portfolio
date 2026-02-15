@@ -11,9 +11,8 @@
                 {{ $profile->full_name }}
             </h1>
         </div>
-        
         <h2 class="text-2xl lg:text-3xl text-slate-300 font-light flex flex-col lg:flex-row items-center gap-4 lg:gap-6 justify-center lg:justify-start">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-purple-400 font-medium">{{ $profile->title ?? 'Full Stack Developer' }}</span>
+            <span class="font-mono text-sky-400 font-medium tracking-wide text-sm lg:text-base">{{ $profile->title ?? 'Full Stack Developer' }}</span>
             <span class="hidden lg:inline-flex items-center justify-center w-1.5 h-1.5 rounded-full bg-slate-600 flex-shrink-0"></span>
             <span class="text-base text-slate-500 inline-flex items-center gap-2">
                 <i class="fas fa-map-marker-alt text-slate-600 text-sm"></i>

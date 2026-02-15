@@ -7,7 +7,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @forelse($projects as $project)
-        <div class="group glass-card rounded-[2rem] overflow-hidden hover:scale-[1.02] transition-all duration-500 flex flex-col h-full reveal-on-scroll bg-gradient-to-br from-white/5 to-white/[0.02]">
+        <div class="group glass-card rounded-[2rem] overflow-hidden hover:scale-[1.02] transition-all duration-500 flex flex-col h-full reveal-on-scroll bg-gradient-to-br from-white/5 to-white/[0.02]" style="transition-delay: {{ $loop->index * 150 }}ms">
             <!-- Thumbnail -->
             <div class="relative h-56 overflow-hidden">
                 @if($project->thumbnail_path)

@@ -14,13 +14,28 @@
 @layer utilities {
     /* Glassmorphism Utilities */
     .glass-panel {
-        @apply bg-slate-900/40 backdrop-blur-2xl shadow-2xl shadow-sky-900/20;
-        border: none;
+        @apply bg-slate-900/40 backdrop-blur-2xl border border-white/5 shadow-2xl shadow-sky-900/20;
     }
     
     .glass-card {
-        @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl shadow-lg;
-        border: none;
+        @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-white/10 shadow-lg;
+        position: relative;
+    }
+
+    .glass-card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: inherit;
+        background: radial-gradient(800px circle at var(--x) var(--y), rgba(255,255,255,0.06), transparent 40%);
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .glass-card:hover::before {
+        opacity: 1;
     }
 
     /* Scroll Reveal Animation */

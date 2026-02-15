@@ -197,6 +197,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize contact form
     initContactForm();
+
+    // Spotlight Effect for Glass Cards
+    document.querySelectorAll('.glass-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+        });
+    });
     
     // Set up skill bars observer
     const skillsSection = document.getElementById('skills');

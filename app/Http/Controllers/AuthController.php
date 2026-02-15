@@ -1,59 +1,56 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     /**
-     * display login form
+     * Display login form.
      */
     public function showLogin()
     {
-        if (Session::get('logged_in')) {
+        if (Auth::check()) {
             return redirect()->route('dashboard');
-        }        
+        }
+
         return view('auth.login');
     }
 
     /**
-     * Handle login authentication
-     * Now checks PostgreSQL database instead of hardcoded values
+     * Handle login authentication using Laravel's built-in Auth system.
      */
     public function authenticate(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
-        $email = trim($request->email);
-        $password = trim($request->password);
-        $user = User::where('email', $email)->first();
-        if ($user && Hash::check($password, $user->password)) {
-            Session::put('logged_in', true);
-            Session::put('user_id', $user->id);
-            Session::put('username', $user->name);
-            Session::put('user_email', $user->email);
-            
-            return redirect()->route('dashboard')
-                ->with('success', 'Welcome back, ' . $user->name . '!');
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard')
+                ->with('success', 'Welcome back, ' . Auth::user()->name . '!');
         }
 
         return back()->withErrors([
-            'email' => 'Invalid email or password.'
+            'email' => 'Invalid email or password.',
         ])->withInput($request->only('email'));
     }
 
     /**
-     * Handle logout
+     * Handle logout.
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        Session::flush();
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route('login')->with('success', 'Logged out successfully!');
     }
 }
