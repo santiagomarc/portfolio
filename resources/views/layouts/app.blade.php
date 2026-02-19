@@ -42,39 +42,48 @@
     @auth
         <div class="fixed top-8 right-8 z-[100] flex flex-col gap-4 w-full max-w-sm pointer-events-none">
             @if(session('success'))
-                <div class="glass-panel px-6 py-4 rounded-xl border-l-4 border-emerald-500 text-emerald-100 pointer-events-auto transform transition-all duration-300 hover:scale-105 shadow-[0_10px_40px_-10px_rgba(16,185,129,0.2)]">
-                    <div class="flex items-center gap-4">
-                        <div class="p-2 bg-emerald-500/20 rounded-full">
-                            <i class="fas fa-check text-emerald-400"></i>
+                <div class="js-flash-message glass-panel px-5 py-4 rounded-xl border-l-4 border-emerald-500 text-emerald-100 pointer-events-auto shadow-[0_10px_40px_-10px_rgba(16,185,129,0.2)] transition-all duration-500 opacity-100 translate-x-0">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-emerald-500/20 rounded-full flex-shrink-0">
+                            <i class="fas fa-check text-emerald-400 text-sm"></i>
                         </div>
-                        <span class="font-medium tracking-wide">{{ session('success') }}</span>
+                        <span class="font-medium tracking-wide text-sm flex-1">{{ session('success') }}</span>
+                        <button type="button" onclick="this.closest('.js-flash-message').remove()" class="text-emerald-300/50 hover:text-emerald-200 transition-colors p-1 -mr-1 flex-shrink-0">
+                            <i class="fas fa-xmark text-sm"></i>
+                        </button>
                     </div>
                 </div>
             @endif
 
             @if(session('error'))
-                <div class="glass-panel px-6 py-4 rounded-xl border-l-4 border-rose-500 text-rose-100 pointer-events-auto transform transition-all duration-300 hover:scale-105 shadow-[0_10px_40px_-10px_rgba(244,63,94,0.2)]">
-                    <div class="flex items-center gap-4">
-                        <div class="p-2 bg-rose-500/20 rounded-full">
-                            <i class="fas fa-exclamation text-rose-400"></i>
+                <div class="js-flash-message glass-panel px-5 py-4 rounded-xl border-l-4 border-rose-500 text-rose-100 pointer-events-auto shadow-[0_10px_40px_-10px_rgba(244,63,94,0.2)] transition-all duration-500 opacity-100 translate-x-0">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-rose-500/20 rounded-full flex-shrink-0">
+                            <i class="fas fa-exclamation text-rose-400 text-sm"></i>
                         </div>
-                        <span class="font-medium tracking-wide">{{ session('error') }}</span>
+                        <span class="font-medium tracking-wide text-sm flex-1">{{ session('error') }}</span>
+                        <button type="button" onclick="this.closest('.js-flash-message').remove()" class="text-rose-300/50 hover:text-rose-200 transition-colors p-1 -mr-1 flex-shrink-0">
+                            <i class="fas fa-xmark text-sm"></i>
+                        </button>
                     </div>
                 </div>
             @endif
 
             @if($errors->any())
-                 <div class="glass-panel px-6 py-4 rounded-xl border-l-4 border-amber-500 text-amber-100 pointer-events-auto transform transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(245,158,11,0.2)]">
+                <div class="js-flash-message glass-panel px-5 py-4 rounded-xl border-l-4 border-amber-500 text-amber-100 pointer-events-auto shadow-[0_10px_40px_-10px_rgba(245,158,11,0.2)] transition-all duration-500 opacity-100 translate-x-0">
                     <div class="flex items-start gap-3">
-                        <i class="fas fa-exclamation-triangle mt-1 text-amber-400"></i>
-                         <div>
-                            <p class="font-medium mb-1">Please fix the following:</p>
-                            <ul class="list-disc pl-4 space-y-1 text-sm opacity-90">
+                        <i class="fas fa-exclamation-triangle mt-1 text-amber-400 flex-shrink-0"></i>
+                        <div class="flex-1">
+                            <p class="font-medium mb-1 text-sm">Please fix the following:</p>
+                            <ul class="list-disc pl-4 space-y-1 text-xs opacity-90">
                                 @foreach($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
+                        <button type="button" onclick="this.closest('.js-flash-message').remove()" class="text-amber-300/50 hover:text-amber-200 transition-colors p-1 -mr-1 flex-shrink-0">
+                            <i class="fas fa-xmark text-sm"></i>
+                        </button>
                     </div>
                 </div>
             @endif
