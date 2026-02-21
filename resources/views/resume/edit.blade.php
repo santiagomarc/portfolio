@@ -288,6 +288,15 @@
                 </span>
                 <span>Editor Mode</span>
             </div>
+
+            {{-- Back to Dashboard breadcrumb --}}
+            <div class="mb-6">
+                <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-2 text-slate-400 hover:text-sky-300 text-sm font-medium transition-colors duration-300 group">
+                    <i class="fas fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+            </div>
+
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4">
                 <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">Edit Your</span>
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-indigo-400"> Resume</span>

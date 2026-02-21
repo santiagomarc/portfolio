@@ -280,69 +280,130 @@
 
             </div>
 
-            {{-- ─── Quick Overview ─── --}}
-            <div class="glass-panel rounded-2xl p-6 sm:p-8">
+            {{-- ═══════════════════════════════════════════════════════ --}}
+            {{-- DATA MANAGEMENT TABLES                                  --}}
+            {{-- ═══════════════════════════════════════════════════════ --}}
+
+            {{-- ─── Projects Table ─── --}}
+            <div id="manage-projects" class="glass-panel rounded-2xl p-6 sm:p-8 mb-8">
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Portfolio Overview</h2>
-                    <a href="{{ route('profile.edit') }}" class="dash-btn dash-btn-ghost text-xs">
-                        <i class="fas fa-pen-to-square text-[0.6rem]"></i> Edit All
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400 border border-sky-500/15">
+                            <i class="fas fa-cube text-sm"></i>
+                        </div>
+                        <h2 class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Projects</h2>
+                    </div>
+                    <a href="{{ route('profile.edit') }}#projects" class="dash-btn dash-btn-ghost text-xs">
+                        <i class="fas fa-plus text-[0.6rem]"></i> Add New
                     </a>
                 </div>
-
-                <div class="space-y-4">
-                    {{-- Profile Summary --}}
-                    <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-950/30 border border-white/[0.04]">
-                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400 flex-shrink-0">
-                            <i class="fas fa-user text-sm"></i>
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <p class="text-white font-medium text-sm">{{ $profile->full_name ?? '—' }}</p>
-                            <p class="text-slate-400 text-xs mt-0.5">{{ $profile->title ?? 'No title set' }}</p>
-                            @if($profile->bio)
-                                <p class="text-slate-500 text-xs mt-2 line-clamp-2 leading-relaxed">{{ Str::limit($profile->bio, 120) }}</p>
+                @if($projects->count() > 0)
+                <div class="space-y-3">
+                    @foreach($projects as $project)
+                    <div class="p-4 rounded-xl bg-slate-950/30 border border-white/[0.04] hover:border-sky-500/15 transition-all duration-300">
+                        <div class="flex items-center gap-2.5">
+                            <p class="text-white font-medium text-sm truncate">{{ $project->title }}</p>
+                            @if($project->is_featured)
+                            <span class="text-[0.6rem] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">Featured</span>
                             @endif
                         </div>
+                        <p class="text-slate-500 text-xs mt-1 truncate">{{ $project->technologies ?? 'No technologies listed' }}</p>
                     </div>
+                    @endforeach
+                </div>
+                @else
+                <p class="text-slate-500 text-sm text-center py-8">No projects yet. <a href="{{ route('profile.edit') }}#projects" class="text-sky-400 hover:text-sky-300 underline">Add your first project</a>.</p>
+                @endif
+            </div>
 
-                    {{-- Featured Projects --}}
-                    @if($projects->where('is_featured', true)->count() > 0)
-                    <div class="p-4 rounded-xl bg-slate-950/30 border border-white/[0.04]">
-                        <div class="flex items-center gap-2 mb-3">
-                            <i class="fas fa-star text-amber-400/70 text-xs"></i>
-                            <p class="text-slate-300 font-medium text-xs uppercase tracking-wider">Featured Projects</p>
+            {{-- ─── Experience Table ─── --}}
+            <div id="manage-experience" class="glass-panel rounded-2xl p-6 sm:p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/15">
+                            <i class="fas fa-briefcase text-sm"></i>
                         </div>
-                        <div class="space-y-2">
-                            @foreach($projects->where('is_featured', true)->take(3) as $proj)
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-2.5 min-w-0">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></div>
-                                    <span class="text-slate-200 text-sm truncate">{{ $proj->title }}</span>
-                                </div>
-                                <span class="text-slate-600 text-[0.65rem] font-mono flex-shrink-0 ml-3">{{ Str::limit($proj->technologies, 30) }}</span>
-                            </div>
-                            @endforeach
-                        </div>
+                        <h2 class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Experience</h2>
                     </div>
-                    @endif
+                    <a href="{{ route('profile.edit') }}#experience" class="dash-btn dash-btn-ghost text-xs">
+                        <i class="fas fa-plus text-[0.6rem]"></i> Add New
+                    </a>
+                </div>
+                @if($experiences->count() > 0)
+                <div class="space-y-3">
+                    @foreach($experiences as $exp)
+                    <div class="p-4 rounded-xl bg-slate-950/30 border border-white/[0.04] hover:border-indigo-500/15 transition-all duration-300">
+                        <p class="text-white font-medium text-sm truncate">{{ $exp->job_title }}</p>
+                        <p class="text-slate-500 text-xs mt-1">{{ $exp->company }} &middot; {{ \Carbon\Carbon::parse($exp->start_date)->format('M Y') }} — {{ $exp->is_current ? 'Present' : \Carbon\Carbon::parse($exp->end_date)->format('M Y') }}</p>
+                    </div>
+                    @endforeach
+                </div>
+                @else
+                <p class="text-slate-500 text-sm text-center py-8">No experience entries yet. <a href="{{ route('profile.edit') }}#experience" class="text-sky-400 hover:text-sky-300 underline">Add your first role</a>.</p>
+                @endif
+            </div>
 
-                    {{-- Skills Snapshot --}}
-                    @if($skills->count() > 0)
-                    <div class="p-4 rounded-xl bg-slate-950/30 border border-white/[0.04]">
-                        <div class="flex items-center gap-2 mb-3">
-                            <i class="fas fa-bolt text-sky-400/70 text-xs"></i>
-                            <p class="text-slate-300 font-medium text-xs uppercase tracking-wider">Top Skills</p>
+            {{-- ─── Skills Table ─── --}}
+            <div id="manage-skills" class="glass-panel rounded-2xl p-6 sm:p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/15">
+                            <i class="fas fa-bolt text-sm"></i>
                         </div>
+                        <h2 class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Skills</h2>
+                    </div>
+                    <a href="{{ route('profile.edit') }}#skills" class="dash-btn dash-btn-ghost text-xs">
+                        <i class="fas fa-plus text-[0.6rem]"></i> Add New
+                    </a>
+                </div>
+                @if($skills->count() > 0)
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    @foreach($skills->groupBy('category') as $category => $categorySkills)
+                    <div class="p-4 rounded-xl bg-slate-950/30 border border-white/[0.04]">
+                        <p class="text-slate-400 text-[0.65rem] font-semibold uppercase tracking-[0.15em] mb-3">{{ $category }}</p>
                         <div class="flex flex-wrap gap-2">
-                            @foreach($skills->sortByDesc('proficiency_level')->take(8) as $skill)
+                            @foreach($categorySkills as $skill)
                             <span class="text-[0.7rem] font-medium text-slate-300 bg-slate-800/60 px-2.5 py-1 rounded-lg border border-white/[0.04]">{{ $skill->name }}</span>
                             @endforeach
-                            @if($skills->count() > 8)
-                            <span class="text-[0.7rem] text-slate-500 px-2 py-1">+{{ $skills->count() - 8 }} more</span>
-                            @endif
                         </div>
                     </div>
-                    @endif
+                    @endforeach
                 </div>
+                <div class="mt-4 text-right">
+                    <a href="{{ route('profile.edit') }}#skills" class="text-sky-400 hover:text-sky-300 text-xs font-medium transition-colors">
+                        <i class="fas fa-pen text-[0.55rem] mr-1"></i> Manage All Skills
+                    </a>
+                </div>
+                @else
+                <p class="text-slate-500 text-sm text-center py-8">No skills added yet. <a href="{{ route('profile.edit') }}#skills" class="text-sky-400 hover:text-sky-300 underline">Add your skills</a>.</p>
+                @endif
+            </div>
+
+            {{-- ─── Education Table ─── --}}
+            <div id="manage-education" class="glass-panel rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/15">
+                            <i class="fas fa-graduation-cap text-sm"></i>
+                        </div>
+                        <h2 class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Education</h2>
+                    </div>
+                    <a href="{{ route('profile.edit') }}#education" class="dash-btn dash-btn-ghost text-xs">
+                        <i class="fas fa-pen-to-square text-[0.6rem]"></i> Edit
+                    </a>
+                </div>
+                @if($education->count() > 0)
+                <div class="space-y-3">
+                    @foreach($education as $edu)
+                    <div class="p-4 rounded-xl bg-slate-950/30 border border-white/[0.04] hover:border-amber-500/15 transition-all duration-300">
+                        <p class="text-white font-medium text-sm truncate">{{ $edu->degree }}</p>
+                        <p class="text-slate-500 text-xs mt-1">{{ $edu->institution }} &middot; {{ $edu->year_graduated ?? 'In Progress' }}</p>
+                    </div>
+                    @endforeach
+                </div>
+                @else
+                <p class="text-slate-500 text-sm text-center py-8">No education entries yet. <a href="{{ route('profile.edit') }}#education" class="text-sky-400 hover:text-sky-300 underline">Add your education</a>.</p>
+                @endif
             </div>
 
         </div>

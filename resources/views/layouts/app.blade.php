@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,6 +100,19 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // ── Auto-dismiss flash messages after 3.5s ──
+            const flashMessages = document.querySelectorAll('.js-flash-message');
+            if (flashMessages.length) {
+                setTimeout(() => {
+                    flashMessages.forEach((msg) => {
+                        msg.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        msg.style.opacity = '0';
+                        msg.style.transform = 'translateX(1rem)';
+                        setTimeout(() => msg.remove(), 500);
+                    });
+                }, 3500);
+            }
+
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
